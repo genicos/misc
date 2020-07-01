@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="d3.min.js"></script>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+  <p></p>
+  <p></p>
+  <p></p>
+
+  <h1>Error wee woo you are busted</h1>
+  <h1>Warning youll survive this time...</h1>
+
+  <script>
+    var data = [100,200,300];
+    d3.select("body")
+      .selectAll('p')
+      .data(data)
+      .text(function(d,i) {
+        console.log("d: " + d);
+        console.log("i: " + i);
+        console.log("this: " + this);
+
+        return d;
+      });
+    
+    
+    d3.selectAll('h1').style("color", function(d, i) {
+      var text = this.innerText;
+      
+      if (text.indexOf("Error") >= 0){
+        return 'red';
+      }else if(text.indexOf('Warning') >= 0){
+        return 'yellow';
+      }
+    });
+  </script>
+
+</body>
+</html>
+
+
+<!-- a function can be passed with parameters(d ,i), d is data passed to the function by .data
+i is the index of the elements selected by .selectAll
+-->

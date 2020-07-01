@@ -9,5 +9,38 @@
   <svg wodth="500" height="500">
     <rect x = "0" y = "0" width = "100" height = "100" fill="yellow">
   </svg>
+  <p> because im blue </p>
+  <p> yet im not </p>
+  <p id="p2">If I were green I would die</p> 
+  <h1> header1 </h1>
+  <h1> why does whitespace matter to html </h1>
+  <p class="yes"> what</p>
+  <h2 class="yes">what</h2>
+  <table>
+  <tr>
+     <td>one</td>
+     <td>two</td>
+  </tr>
+  <tr>
+     <td>three</td>
+     <td>four</td>
+  </tr>
+  </table>
+  <script>
+    d3.select("p").style("color", "green");
+    d3.select("#p2").style("color","blue");
+    d3.selectAll("h1").style("color", "red");
+    d3.selectAll(".yes").style("color", "orange");
+    d3.select("tr").selectAll("td").style("background-color", 'red');
+  </script>
 </body>
 </html>
+
+
+<!-- d3.select selects a DOM or group of DOMS from the html
+what comes after is DOM manipulation. Some others include
+
+.text("content");
+.html("content");
+.attr("name", "value");
+-->
