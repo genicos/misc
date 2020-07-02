@@ -3,18 +3,18 @@ CC = clang
 
 .phony: clean dval
 
-dither: dither.o lattice.o
-	$(CC) dither.o lattice.o -o dither -lm
+main: main.o lattice.o
+	$(CC) main.o lattice.o -o main -lm
 
-dither.o: dither.c
-	$(CC) $(CFLAGS) -c dither.c
+main.o: main.c
+	$(CC) $(CFLAGS) -c main.c
 
 lattice.o: lattice.c lattice.h
 	$(CC) $(CFLAGS) -c lattice.c
 clean: 
-	rm dither.o dither
+	rm main.o lattice.o main
 
 dval:
 	make clean
-	make dither
-	valgrind --leak-check=full --show-leak-kinds=all ./dither
+	make main
+	valgrind --leak-check=full --show-leak-kinds=all ./main
