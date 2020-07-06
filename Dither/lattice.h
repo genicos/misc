@@ -15,6 +15,6 @@ lattice *create_lattice(int32_t origin[2], int32_t point1[2], int32_t point2[2])
 
 void delete_lattice(lattice *l);
 
-bool IsIn(lattice *l, int32_t x, int32_t y);
+bool IsInLattice(lattice *l, int32_t x, int32_t y);
 
 bool draw_lattice(lattice *l, int32_t width, int32_t height);

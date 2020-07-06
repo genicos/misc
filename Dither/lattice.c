@@ -22,7 +22,7 @@ void delete_lattice(lattice *l){
 }
 
 
-bool IsIn(lattice *l, int32_t x, int32_t y){
+bool IsInLattice(lattice *l, int32_t x, int32_t y){
   if(!l){
     return false;
   }
@@ -62,7 +62,7 @@ bool draw_lattice(lattice *l, int32_t width, int32_t height){
   for(int y = 0; y < height; y++){
     for(int x = 0; x < width; x++){
       
-      if(IsIn(l, x,y))
+      if(IsInLattice(l, x,y))
         putchar('#');
       else
         putchar(' ');
