@@ -10,20 +10,14 @@
 #define BINARY_PREFIX 1
 
 
-//does not save space for expression
+//does not save space for expression or lattice pointer array
 dither *create_dither(uint8_t lattice_count, uint32_t expression_length){
   dither *d = (dither *)malloc(sizeof(dither));
   if(!d){
     return NULL;
   }
   
-
   d->lattice_count = lattice_count;
-
-  d->lattices = (lattice **)malloc(sizeof(lattice *) * lattice_count);
-  if(!d->lattices){
-    return NULL;
-  }
   
   d->expression_length = expression_length;
 
@@ -31,10 +25,7 @@ dither *create_dither(uint8_t lattice_count, uint32_t expression_length){
 }
 
 void delete_dither(dither *d){
-  if(d){
-    free(d->lattices);
-    free(d);
-  }
+  free(d);
 }
 
 

@@ -3,28 +3,32 @@
 #include <stdio.h>
 
 int main(){
-  int32_t origin[2] = {0,0};
-  int32_t point1[2] = {2,-8};
-  int32_t point2[2] = {4, -1};
+  int32_t lattice_data[10][6];
+  lattice *lattices[10];
   
-  lattice *l = create_lattice(origin, point1, point2);
-  draw_lattice(l,190,100);
   
-  printf("\n\n\n\n\n****************\n\n\n");
-
-  int32_t norgin[2] = {0,0};
-  int32_t noint1[2] = {4,1};
-  int32_t noint2[2] = {-2,3};
-
-  lattice *la = create_lattice(norgin, noint1, noint2);
-  draw_lattice(la,190,100);
+  lattice_data[0][0] = 0;
+  lattice_data[0][1] = 0;
+  lattice_data[0][2] = 1;
+  lattice_data[0][3] = -4;
+  lattice_data[0][4] = 7;
+  lattice_data[0][5] = 4;
+  lattices[0] = create_lattice(&lattice_data[0][0],&lattice_data[0][2],&lattice_data[0][4]);
+  draw_lattice(lattices[0],190,100);
   
-  printf("\n\n\n\n\n****************\n\n\n");
-
-  char *expression = "(A^!B)";
+  lattice_data[1][0] = 0;
+  lattice_data[1][1] = 0;
+  lattice_data[1][2] = 8;
+  lattice_data[1][3] = 2;
+  lattice_data[1][4] = -3;
+  lattice_data[1][5] = 4;
+  lattices[1] = create_lattice(&lattice_data[1][0],&lattice_data[1][2],&lattice_data[1][4]);
+  draw_lattice(lattices[1],190,100);
+  
+  
+  char *expression = "(AvB)";
   dither *d = create_dither(2, sizeof(expression) - 1);
-  d->lattices[0] = l;
-  d->lattices[1] = la;
+  d->lattices = lattices;
   d->expression = expression;
 
   draw_dither(d,190,100);
