@@ -1,3 +1,6 @@
+#ifndef __LATTICE_H__
+#define __LATTICE_H__
+
 #include <inttypes.h>
 #include <stdbool.h>
 
@@ -18,3 +21,5 @@ void delete_lattice(lattice *l);
 bool IsInLattice(lattice *l, int32_t x, int32_t y);
 
 bool draw_lattice(lattice *l, int32_t width, int32_t height);
+
+#endif
