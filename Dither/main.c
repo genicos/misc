@@ -25,9 +25,19 @@ int main(){
   lattices[1] = create_lattice(&lattice_data[1][0],&lattice_data[1][2],&lattice_data[1][4]);
   draw_lattice(lattices[1],190,100);
   
+  lattice_data[2][0] = 4;
+  lattice_data[2][1] = -3;
+  lattice_data[2][2] = 2;
+  lattice_data[2][3] = -7;
+  lattice_data[2][4] = 9;
+  lattice_data[2][5] = 1;
+  lattices[2] = create_lattice(&lattice_data[2][0],&lattice_data[2][2],&lattice_data[2][4]);
+  draw_lattice(lattices[2],190,100);
   
-  char *expression = "(AvB)";
-  dither *d = create_dither(2, sizeof(expression) - 1);
+  
+  
+  char *expression = "((AvC)vB)";
+  dither *d = create_dither(3, sizeof(expression) - 1);
   d->lattices = lattices;
   d->expression = expression;
 
