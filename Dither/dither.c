@@ -50,6 +50,7 @@ bool solve_binary_infix_strict_expression(dither *d, int32_t x, int32_t y, char 
     if((expression[0] - 'A') >= 0 && (expression[0] - 'A') < d->lattice_count){
       return IsInLattice(d->lattices[expression[0] - 'A'], x, y);
     }
+    printf("A\n");
     return false;
   }
   if(expression[0] == '!'){
@@ -67,9 +68,10 @@ bool solve_binary_infix_strict_expression(dither *d, int32_t x, int32_t y, char 
 
     uint32_t i = 1;       //The character after the initial '(' 
     first_operand = &expression[1];
-    
+    printf("A\n"); 
     for(;i < length; i++){
       switch(expression[i]){
+	printf("%c, %d",expression[i], level);
         case '(':
           level++;
 	break;
@@ -90,7 +92,7 @@ bool solve_binary_infix_strict_expression(dither *d, int32_t x, int32_t y, char 
 	  }
 	break;
       }
-      
+      printf("level:%d\n",level);
       if(level < 0){
 	if (operator_is_found){
 	  second_operand = &expression[1 + first_operand_length + 1];
@@ -111,12 +113,14 @@ bool solve_binary_infix_strict_expression(dither *d, int32_t x, int32_t y, char 
       }
     } 
   }
-
+  
   return false;
 }
 
 bool IsInDither(dither *d, int32_t x, int32_t y){
+  if(!x && !y)
   return solve_binary_infix_strict_expression(d, x, y, d->expression, d->expression_length);
+  return false;
 }
 
 void draw_dither(dither *d, uint32_t width, uint32_t height){

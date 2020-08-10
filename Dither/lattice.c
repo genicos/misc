@@ -39,8 +39,6 @@ bool IsInLattice(lattice *l, int32_t x, int32_t y){
                                                //                                  [y1, y2]
     
   if(det){
-    //printf("%d", (x * l->y2 - y * l->x2) % det == 0 && (l->x1 * y - l->y1 * x) % det == 0);
-
     return (x * l->y2 - y * l->x2) % det == 0 && (l->x1 * y - l->y1 * x) % det == 0;
   }else{
     int32_t common_denominator_x = l->x1;
@@ -49,7 +47,11 @@ bool IsInLattice(lattice *l, int32_t x, int32_t y){
       common_denominator_x = l->x2;
       common_denominator_y = l->y2;
     }
-    return (x % common_denominator_x) == 0 && (y % common_denominator_y) == 0;
+    if(common_denominator_x && common_denominator_y){
+      return (x % common_denominator_x) == 0 && (y % common_denominator_y) == 0;
+    }else{
+      return false;
+    }
   }
 }
 
