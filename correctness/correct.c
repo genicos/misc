@@ -1,8 +1,13 @@
 #include <stdio.h>
 #include "stack.h"
 #include <stdbool.h>
+#include <stdlib.h>
 
-int main(int argc, char **argv){
+typedef enum {SEEKING_ASSERTION_OPEN_1, SEEKING_ASSERTION_OPEN_2, SEEKING_ASSERTION_OPEN_3,
+              SEEKING_ASSERTION_END_1,  SEEKING_ASSERTION_END_2,  SEEKING_ASSERTION_END_3,
+              SEEKING_CODE_OPEN_1,      SEEKING_CODE_OPEN_2,      SEEKING_CODE_OPEN_3,
+              SEEKING_CODE_END_1,  SEEKING_CODE_END_2,       SEEKING_CODE_END_3} state;
+int main(){
   /*
   char *file_name; //name of file to check for correctness
   file_name = argv[1];
@@ -24,9 +29,23 @@ int main(int argc, char **argv){
   
   bool run = true;
   char c;
-  uint8_t state = 0;
+  char tokens* = "-v--^--{--}-";
+  uint8_t token_index;
+
+  bool reading_assertion = false;
+  uint32_t assertion_index = 0;
+  bool reading_code = false;
+  uint32_t code_index = 0;
+  
   while(run){
     c = getchar();
+    if(c == tokens[token_index]){
+      token_index++;
+      if(token_index == 3){
+        reading_assertion = true;
+      }
+    }
     
   }
+  printf("nice state %d\n", state);
 }
